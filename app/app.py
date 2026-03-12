@@ -4,10 +4,10 @@ import numpy as np
 import joblib
 
 # load models, columns and encoders
-model = joblib.load('/home/bellona/Documents/40 days Plan/ADS Capstone Project/models/car_price_model.pkl')
-model_mean = joblib.load('/home/bellona/Documents/40 days Plan/ADS Capstone Project/models/model_mean.pkl')
-global_mean = joblib.load('/home/bellona/Documents/40 days Plan/ADS Capstone Project/models/global_mean.pkl')
-columns = joblib.load('/home/bellona/Documents/40 days Plan/ADS Capstone Project/models/car_columns.pkl')
+model = joblib.load('models/car_price_model.pkl')
+model_mean = joblib.load('models/model_mean.pkl')
+global_mean = joblib.load('models/global_mean.pkl')
+columns = joblib.load('models/car_columns.pkl')
 
 st.set_page_config(page_title='Used Car Price Predictor', layout='centered')
 st.title('Used Car Price Prediction')
