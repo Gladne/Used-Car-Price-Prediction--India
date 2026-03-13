@@ -1,7 +1,12 @@
 # Used-Car-Price-Prediction--India
 Predicting used car prices with machine learning using real-world vehicle data from India.
 
-# The project includes:
+## Project Overview
+
+This project focuses on building a **Machine Learning model to predict the selling price of used cars** based on several vehicle attributes such as brand, model, mileage, age, fuel type, and other characteristics.
+The model is trained using historical car sales data and evaluates multiple features that influence vehicle value.
+
+### The project includes:
 - Data cleaning and preprocessing
 - Exploratory Data Analysis (EDA)
 - Feature engineering and encoding
@@ -9,7 +14,7 @@ Predicting used car prices with machine learning using real-world vehicle data f
 - Hyperparameter tuning
 - Model comparison and final selection
 
-# Dataset
+### Dataset
 The dataset contains car models, brands and selling price information, including:
 - Car brand
 - Car model
@@ -19,56 +24,97 @@ The dataset contains car models, brands and selling price information, including
 - Car seats
 - Selling Price (target variable)
 
-# Exploratory Data Analysis</h4>
+## Project Workflow
 
-__Correlation Analysis__ <br>
-A correlation heatmap was used to examine the relationships among the variables in the dataset. The analysis revealed a moderate positive correlation between the features *vehicle_age* and *km_driven*. Highly correlated features may introduce redundancy and potentially contribute to model overfitting during training.
+The project follows a typical **machine learning pipeline**:
 
-Furthermore, the correlation analysis identified *max_power* as one of the most influential variables affecting the selling price, exhibiting a strong positive correlation with the target variable. This suggests that vehicles with higher engine power tend to have higher resale values.
+### Data Understanding
 
-__Features affecting Selling Price__ <br>
-Based on exploratory data analysis, three key features were identified as having a significant influence on the selling price of used cars:
-- Maximum engine power (*max_power*)
-- Car brand
-- Car model
+* Loaded and explored the dataset
+* Checked dataset shape, types, and structure
+* Generated statistical summaries
 
-Other available features were retained to allow the machine learning models to automatically learn additional patterns in the data. However, the *car_name* column was removed because it contains information closely related to the car model, which could lead to data leakage or overfitting.
+### Data Cleaning
 
-# Encoding Categorical features
+* Verified missing values
+* Removed unnecessary columns
+* Ensured correct data types
 
-Two encoding techniques were used to transform categorical variables into numerical representations:
+### Exploratory Data Analysis (EDA)
 
-- __One-Hot Encoding__ was applied to the brand feature.
-- __Target Encoding__ was applied to the model feature.
+Performed analysis to understand feature relationships:
 
-These encoding techniques allowed the models to effectively incorporate categorical information while maintaining computational efficiency.
+* Distribution of car prices
+* Relationship between mileage and price
+* Impact of vehicle age
+* Brand and model price variations
 
-# Feature Scaling
+### Feature Engineering
 
-Feature scaling was applied selectively based on the requirements of each machine learning algorithm.
+Key transformations applied:
+* Converted categorical variables into numerical form using:
 
-Scaling was necessary for the Linear Regression model because it is sensitive to differences in feature magnitude. Without scaling, features with larger numerical ranges may dominate the model and negatively affect coefficient estimation.
+  * **Target Encoding**
+  * **One-Hot Encoding**
 
-In contrast, tree-based models such as Decision Tree, Random Forest, and XGBoost do not require feature scaling. These algorithms split data based on decision thresholds rather than feature magnitude or distance, making them invariant to the scale of input variables.
+### Data Splitting
 
-# Modelling and Evaluation
+Dataset divided into:
 
-The following machine learning models were implemented in this study:
+* **Training set**
+* **Testing set**
 
-- RandomForestRegressor
-- DecisionTreeRegressor
-- XGBRegressor
-- LinearRegression
+Typically using:
 
-Model performance was evaluated using the following regression metrics:
+```
+train_test_split()
+```
+### Model Training
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- R² Score
+Machine learning model used:
 
-Since the dataset is relatively small, cross-validation was applied during model training to improve model reliability and ensure better generalization performance. Cross-validation allows the model to learn from multiple training subsets of the data, thereby reducing the risk of overfitting.
+**Random Forest Regressor**
 
-The experimental results indicate that tree-based ensemble models, particularly Random Forest and XGBoost, outperform Linear Regression. This is because ensemble tree models are capable of capturing nonlinear relationships and complex interactions between variables, which are common in real-world pricing data such as used car markets.
+Key parameters used:
+
+```
+RandomForestRegressor(
+    n_estimators=500,
+    max_depth=12,
+    min_samples_split=5,
+    min_samples_leaf=2,
+    random_state=42,
+    n_jobs=-1
+)
+```
+
+Random Forest was chosen because it:
+
+* Handles non-linear relationships well
+* Reduces overfitting through ensemble learning
+* Works effectively with tabular datasets
+
+### Model Evaluation
+
+Model performance evaluated using:
+
+* **Cross Validation**
+* **Regression metrics**
+    - Mean Absolute Error (MAE)
+    - Root Mean Squared Error (RMSE)
+    - R² Score
+
+Example cross-validation output:
+
+```
+Cross Validation Scores:
+[-0.1234, -0.1212, -0.1158, -0.1177, -0.1160]
+
+Mean CV Score:
+-0.1188
+```
+
+This indicates the model's stability across multiple folds.
 
 ### Technologies Used
 Python, Pandas, NumPy, Matplotlib / Seaborn, Scikit-learn
@@ -80,3 +126,183 @@ https://used-car-price-prediction--india-first-release.streamlit.app/
 git clone https://github.com/Gladne/Used-Car-Price-Prediction--India.git </br>
 pip install pandas numpy matplotlib seaborn scikit-learn </br>
 jupyter notebook
+
+
+
+
+
+
+
+# Used Car Price Prediction (India)
+
+
+---
+
+
+
+## 🔍 Project Workflow
+
+The project follows a typical **machine learning pipeline**:
+
+### 1️⃣ Data Understanding
+
+* Loaded and explored the dataset
+* Checked dataset shape, types, and structure
+* Generated statistical summaries
+
+### 2️⃣ Data Cleaning
+
+* Verified missing values
+* Removed unnecessary columns
+* Ensured correct data types
+
+### Exploratory Data Analysis (EDA)
+
+Performed analysis to understand feature relationships:
+
+* Distribution of car prices
+* Relationship between mileage and price
+* Impact of vehicle age
+* Brand and model price variations
+
+---
+
+### 4️⃣ Feature Engineering
+
+Key transformations applied:
+
+* Created **Age feature** from manufacturing year
+* Converted categorical variables into numerical form using:
+
+  * **Target Encoding**
+  * **One-Hot Encoding**
+
+---
+
+### 5️⃣ Data Splitting
+
+Dataset divided into:
+
+* **Training set**
+* **Testing set**
+
+Typically using:
+
+```
+train_test_split()
+```
+
+---
+
+### 6️⃣ Model Training
+
+Machine learning model used:
+
+**Random Forest Regressor**
+
+Key parameters used:
+
+```
+RandomForestRegressor(
+    n_estimators=500,
+    max_depth=12,
+    min_samples_split=5,
+    min_samples_leaf=2,
+    random_state=42,
+    n_jobs=-1
+)
+```
+
+Random Forest was chosen because it:
+
+* Handles non-linear relationships well
+* Reduces overfitting through ensemble learning
+* Works effectively with tabular datasets
+
+---
+
+### 7️⃣ Model Evaluation
+
+Model performance evaluated using:
+
+* **Cross Validation**
+* **Regression metrics**
+
+Example cross-validation output:
+
+```
+Cross Validation Scores:
+[-0.1234, -0.1212, -0.1158, -0.1177, -0.1160]
+
+Mean CV Score:
+-0.1188
+```
+
+This indicates the model's stability across multiple folds.
+
+---
+
+## ⚙️ Technologies Used
+
+* **Python**
+* **Pandas**
+* **NumPy**
+* **Scikit-Learn**
+* **Matplotlib**
+* **Seaborn**
+* **Jupyter Notebook**
+
+---
+
+## 📁 Project Structure
+
+```
+Used-Car-Price-Prediction
+│
+├── Used_Car_price_prediction.ipynb
+├── dataset.csv
+├── README.md
+└── models/
+```
+
+---
+
+## 🚀 Future Improvements
+
+Possible improvements to enhance the model:
+
+* Hyperparameter tuning with **GridSearchCV**
+* Feature importance analysis
+* Deployment using:
+
+  * **Flask**
+  * **Streamlit**
+* Building a **web interface for predictions**
+* Using advanced models like:
+
+  * XGBoost
+  * LightGBM
+
+---
+
+## 🎯 Conclusion
+
+This project demonstrates the complete machine learning workflow:
+
+* Data preprocessing
+* Feature engineering
+* Model training
+* Model evaluation
+
+The trained model can estimate used car prices with reasonable accuracy and can be integrated into applications such as **car marketplaces or dealership pricing tools**.
+
+---
+
+## 👤 Author
+
+**Gladness Ernest**
+
+Data Analyst
+Ministry of Education, Science and Technology
+
+---
